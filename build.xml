@@ -1,0 +1,15 @@
+<project basedir="." default="testreport" name="ant script for testing soapui project">
+	<property environment="env"/>
+	<property name="results.dir" value="."/>
+	<property name="reports.dir" value="${results.dir}/Reports"/>
+	<property name="html.dir" value="${reports.dir}/html"/>
+	<target name="testreport" >
+		<mkdir dir="${reports.dir}"/>
+		<junitreport todir="${reports.dir}">
+			<fileset dir="${results.dir}">
+				<include name="TEST*.xml"/>
+			</fileset>
+			<report	 format="frames" todir="${html.dir}" />
+		</junitreport>
+	</target>
+</project>
